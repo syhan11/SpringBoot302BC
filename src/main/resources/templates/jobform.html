@@ -5,6 +5,10 @@
     <title>JobForm</title>
 </head>
 <body>
+    <!-- use "job" object; post-processing is "/process" at the controller
+      -- It will check each field for an error.  If no error was found it will
+      -- save data to its corresponding field
+      -->
     <form action="#"
           th:action="@{/process}"
           th:object="${job}"

@@ -17,17 +17,20 @@ public class HomeCtrl {
 
     @RequestMapping("/")
     public String listJobs(Model model){
+        // call jobRepository's findAll method to retrieve list of job
+        // and pass as "jobs" variable to list.html
         model.addAttribute("jobs", jobRepository.findAll());
         return "list";
     }
 
     @GetMapping("/add")
     public String jobForm(Model model){
+        // create empty Job object and pass it as "job" variable to jobform.html
         model.addAttribute("job", new Job());
         return "jobform";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/process")
     public String processForm(@Valid Job job, BindingResult result){
         if (result.hasErrors()){
             return "jobform";
